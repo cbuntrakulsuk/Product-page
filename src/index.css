@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .mobile-slide {
+    @apply h-80 w-full object-cover object-top;
+  }
+
+  .menu-item {
+    @apply mb-2 text-sm text-zinc-700;
+  }
+}

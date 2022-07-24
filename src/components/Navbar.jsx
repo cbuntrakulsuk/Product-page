@@ -5,12 +5,12 @@ import Avatar from "../images/image-avatar.png";
 function Navbar() {
   return (
     <nav className="flex items-center bg-white h-16 w-full">
-      <div className="mx-5 my-4">
+      <div className="mx-5 my-4 cursor-pointer">
         <Menu />
       </div>
       <div className="text-xl font-bold font-kumhb w-1/2">sneakers</div>
       <div className="w-1/2 flex justify-end mr-5">
-        <Cart />
+        <Cart className="fill-slate-500" />
       </div>
       <div className="scale-50 mr-5">
         <img src={Avatar} alt="Profile Avatar" />

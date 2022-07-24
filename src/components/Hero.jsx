@@ -15,32 +15,16 @@ function Hero() {
   return (
     <Slider {...settings}>
       <div>
-        <img
-          className="h-80 w-full object-cover object-top"
-          src={P1}
-          alt="Shoes"
-        />
+        <img className="mobile-slide" src={P1} alt="Shoes" />
       </div>
       <div>
-        <img
-          className="h-80 w-full object-cover object-top"
-          src={P2}
-          alt="Shoes"
-        />
+        <img className="mobile-slide" src={P2} alt="Shoes" />
       </div>
       <div>
-        <img
-          className="h-80 w-full object-cover object-top"
-          src={P3}
-          alt="Shoes"
-        />
+        <img className="mobile-slide" src={P3} alt="Shoes" />
       </div>
       <div>
-        <img
-          className="h-80 w-full object-cover object-top"
-          src={P4}
-          alt="Shoes"
-        />
+        <img className="mobile-slide" src={P4} alt="Shoes" />
       </div>
     </Slider>
   );
