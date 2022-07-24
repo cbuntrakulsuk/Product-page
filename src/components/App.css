@@ -1,1 +1,9 @@
-
+.slick-prev {
+  left: 5%;
+  z-index: 10;
+  transform: scale(1.5);
+}
+.slick-next {
+  right: 5%;
+  transform: scale(1.5);
+}
