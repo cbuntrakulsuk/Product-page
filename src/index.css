@@ -8,6 +8,10 @@
   }
 
   .menu-item {
-    @apply mb-2 text-sm text-zinc-700;
+    @apply mb-3 text-sm text-zinc-700;
+  }
+
+  .menu-item:hover {
+    @apply text-orange cursor-pointer;
   }
 }
