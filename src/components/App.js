@@ -9,30 +9,38 @@ import React, { useState } from "react";
 
 function App() {
   const [menu, setMenu] = useState(false); //mobile menu state
-  const [cart, setCart] = useState(false); //shopping cart state
+  const [opencart, setOpencart] = useState(false); //open cart state
+  const [shoppingcart, setShoppingcart] = useState([]); //shopping cart
 
   function toggleMenu() {
     setMenu((prevMenu) => !prevMenu);
   }
 
   function toggleCart() {
-    setCart((prevCart) => !prevCart);
+    setOpencart((prevCart) => !prevCart);
+  }
+
+  function addtoCart(title, price, quantity) {
+    //expand to allow more than one item in the array
+    setShoppingcart({
+      product: title,
+      price: price,
+      quantity: quantity,
+    });
   }
 
   return (
     <div className="App">
       <Navbar menu={toggleMenu} cart={toggleCart} />
-
       <div
         className={
-          cart
+          opencart
             ? "z-40 absolute top-20 left-0 w-full transition-all duration-300 ease-in-out"
             : "absolute -top-96 opacity-0"
         }
       >
-        <Cart />
+        <Cart items={shoppingcart} />
       </div>
-
       <div
         className={
           menu
@@ -43,11 +51,13 @@ function App() {
         <Menu closeMenu={toggleMenu} />
       </div>
       <Hero />
-      <Desc />
+      <Desc
+        addtoCart={addtoCart}
+        title="Autumn Limited Edition Sneakers"
+        price="125.00"
+      />
     </div>
   );
 }
 
 export default App;
-
-//commit "add slide transitions to cart and mobile menu"

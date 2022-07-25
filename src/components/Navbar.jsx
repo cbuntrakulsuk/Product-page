@@ -13,7 +13,7 @@ function Navbar(props) {
         sneakers
       </div>
       <div className="w-1/2 flex justify-end mr-5" onClick={props.cart}>
-        <Cart className="fill-slate-500 cursor-pointer" />
+        <Cart className="fill-slate-500 cursor-pointer hover:fill-orange" />
       </div>
       <div className="scale-50 mr-5 cursor-pointer">
         <img src={Avatar} alt="Profile Avatar" />
