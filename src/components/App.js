@@ -3,25 +3,41 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import Desc from "./Desc";
 import Menu from "./Menu";
+import Cart from "./Cart";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 function App() {
-  const [check, setCheck] = useState(false);
+  const [menu, setMenu] = useState(false); //mobile menu state
+  const [cart, setCart] = useState(false); //shopping cart state
 
   function toggleMenu() {
-    setCheck((prevCheck) => !prevCheck);
-    console.log(check);
+    setMenu((prevMenu) => !prevMenu);
+  }
+
+  function toggleCart() {
+    setCart((prevCart) => !prevCart);
   }
 
   return (
     <div className="App">
-      <Navbar menu={toggleMenu} />
+      <Navbar menu={toggleMenu} cart={toggleCart} />
+
       <div
         className={
-          check
-            ? "translate-x-0 z-50 duration-300 ease-in-out absolute top-6 bg-white h-screen w-40 pl-4"
-            : "absolute translate-x-[-100%] z-50 duration-300 h-screen"
+          cart
+            ? "z-40 absolute top-20 left-0 w-full transition-all duration-300 ease-in-out"
+            : "absolute -top-96 opacity-0"
+        }
+      >
+        <Cart />
+      </div>
+
+      <div
+        className={
+          menu
+            ? "translate-x-0 z-50 duration-300 absolute top-0 bg-white h-screen w-2/5 pl-4 pt-8 ease-in-out"
+            : "absolute top-0 translate-y-7 translate-x-[-100%] z-50 duration-300 h-screen"
         }
       >
         <Menu closeMenu={toggleMenu} />
@@ -33,3 +49,5 @@ function App() {
 }
 
 export default App;
+
+//commit "add slide transitions to cart and mobile menu"
