@@ -1,11 +1,15 @@
 import productImg from "../images/image-product-1-thumbnail.jpg";
 import { ReactComponent as Delete } from "../images/icon-delete.svg";
+import { CartContext } from "./ShoppingCartContext";
+
+import React, { useContext } from "react";
 
 function Product(props) {
   let total = props.quantity * props.price;
+  const [, setShoppingList] = useContext(CartContext);
 
   function deleteItem() {
-    props.deleteItem();
+    setShoppingList([]);
   }
 
   return (

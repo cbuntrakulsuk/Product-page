@@ -1,19 +1,22 @@
 import { ReactComponent as Menu } from "../images/icon-menu.svg";
 import { ReactComponent as Cart } from "../images/icon-cart.svg";
 import Avatar from "../images/image-avatar.png";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { CartContext } from "./ShoppingCartContext";
 
 function Navbar(props) {
+  const [shoppingList] = useContext(CartContext);
   const [isCartEmpty, setisCartEmpty] = useState(true);
+
   useEffect(() => {
-    if (props.cartItems.quantity === undefined) {
+    if (shoppingList.quantity === undefined) {
       setisCartEmpty(true);
-    } else if (props.cartItems.quantity === 0) {
+    } else if (shoppingList.quantity === 0) {
       setisCartEmpty(true);
     } else {
       setisCartEmpty(false);
     }
-  }, [props.cartItems.quantity]);
+  }, [shoppingList.quantity]);
 
   return (
     <nav className="flex items-center bg-white h-16 w-full z-50">
@@ -30,7 +33,7 @@ function Navbar(props) {
         <Cart className="fill-slate-500 cursor-pointer hover:fill-orange" />
         {isCartEmpty ? null : (
           <div className="absolute w-4 h-3 bg-orange rounded bottom-3 -right-1 text-white font-bold text-xs flex justify-center items-center">
-            {props.cartItems.quantity}
+            {shoppingList.quantity}
           </div>
         )}
       </div>

@@ -1,11 +1,16 @@
 import { ReactComponent as Minus } from "../images/icon-minus.svg";
 import { ReactComponent as Plus } from "../images/icon-plus.svg";
 import { ReactComponent as Cart } from "../images/icon-cart.svg";
-import React, { useState } from "react";
-// import Product from "./Product";
+import React, { useState, useContext } from "react";
+import { CartContext } from "./ShoppingCartContext";
 
 function Desc(props) {
   const [quantity, setQuantity] = useState(0);
+  const [shoppingList, setShoppingList] = useContext(CartContext);
+
+  //pull from json later for any random item
+  let productName = "Autumn Limted Edition Senakers";
+  let price = "125.00";
 
   function handleQuantity(event) {
     if (event.target.getAttribute("name") === "subtract") {
@@ -18,7 +23,11 @@ function Desc(props) {
   }
 
   function sendtoCart() {
-    props.addtoCart(props.title, props.price, quantity);
+    setShoppingList({
+      product: productName,
+      price: price,
+      quantity: quantity,
+    });
   }
 
   return (

@@ -1,16 +1,18 @@
 import Product from "./Product";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { CartContext } from "./ShoppingCartContext";
 
 function Cart(props) {
   const [cartisEmpty, setcartisEmpty] = useState();
+  const [shoppingList] = useContext(CartContext);
 
   useEffect(() => {
-    if (props.items.product === undefined) {
+    if (shoppingList.product === undefined) {
       setcartisEmpty(true);
     } else {
       setcartisEmpty(false);
     }
-  }, [props.items.product]);
+  }, [shoppingList.product]);
 
   return (
     <div className=" bg-white mt-3 rounded-md font-bold p-5 mx-5">
@@ -20,9 +22,9 @@ function Cart(props) {
         <div className="text-center my-10 text-gray"> Your cart is empty</div>
       ) : (
         <Product
-          title={props.items.product}
-          price={props.items.price}
-          quantity={props.items.quantity}
+          title={shoppingList.product}
+          price={shoppingList.price}
+          quantity={shoppingList.quantity}
           deleteItem={props.deleteItem}
         />
       )}
