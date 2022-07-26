@@ -20,6 +20,10 @@ function App() {
     setOpencart((prevCart) => !prevCart);
   }
 
+  function deleteItem() {
+    setShoppingcart([]);
+  }
+
   function addtoCart(title, price, quantity) {
     //expand to allow more than one item in the array
     setShoppingcart({
@@ -31,7 +35,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar menu={toggleMenu} cart={toggleCart} />
+      <Navbar menu={toggleMenu} cart={toggleCart} cartItems={shoppingcart} />
       <div
         className={
           opencart
@@ -39,7 +43,7 @@ function App() {
             : "absolute -top-96 opacity-0"
         }
       >
-        <Cart items={shoppingcart} />
+        <Cart items={shoppingcart} deleteItem={deleteItem} />
       </div>
       <div
         className={
