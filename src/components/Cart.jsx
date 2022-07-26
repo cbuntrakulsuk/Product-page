@@ -15,16 +15,16 @@ function Cart(props) {
   }, [shoppingList.product]);
 
   return (
-    <div className=" bg-white mt-3 rounded-md font-bold p-5 mx-5">
+    <div className=" bg-white mt-3 rounded-md font-bold p-5 mx-5 w-[500px] h-64">
       Cart
       <hr className="mt-6 text-zinc-300"></hr>
       {cartisEmpty ? (
         <div className="text-center my-10 text-gray"> Your cart is empty</div>
       ) : (
         <Product
-          title={shoppingList.product}
-          price={shoppingList.price}
-          quantity={shoppingList.quantity}
+          // title={shoppingList.product}
+          // price={shoppingList.price}
+          // quantity={shoppingList.quantity}
           deleteItem={props.deleteItem}
         />
       )}

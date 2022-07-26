@@ -22,11 +22,11 @@ function App() {
   return (
     <CartProvider>
       <div className="App">
-        <Navbar menu={toggleMenu} cart={toggleCart} />
+        <Navbar toggleMenu={toggleMenu} toggleCart={toggleCart} />
         <div
           className={
             opencart
-              ? "z-40 absolute top-20 left-0 w-full transition-all duration-300 ease-in-out"
+              ? "z-40 absolute top-20 left-0 transition-all duration-300 ease-in-out flex justify-center w-full"
               : "absolute -top-96 opacity-0"
           }
         >
@@ -39,10 +39,12 @@ function App() {
               : "absolute top-0 translate-y-7 translate-x-[-100%] z-50 duration-300 h-screen"
           }
         >
-          <Menu closeMenu={toggleMenu} />
+          <Menu toggleMenu={toggleMenu} />
         </div>
-        <Hero />
-        <Desc />
+        <div className="lg:flex">
+          <Hero />
+          <Desc />
+        </div>
       </div>
     </CartProvider>
   );

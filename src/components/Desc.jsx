@@ -6,7 +6,7 @@ import { CartContext } from "./ShoppingCartContext";
 
 function Desc(props) {
   const [quantity, setQuantity] = useState(0);
-  const [shoppingList, setShoppingList] = useContext(CartContext);
+  const [, setShoppingList] = useContext(CartContext);
 
   //pull from json later for any random item
   let productName = "Autumn Limted Edition Senakers";
@@ -31,7 +31,7 @@ function Desc(props) {
   }
 
   return (
-    <div className="mx-auto px-5 py-5">
+    <div className="mx-auto px-5 py-5 lg:mr-40 lg:ml-20 lg:mt-10 lg:px-12">
       <div className="uppercase font-kumhb text-xs text-orange font-bold tracking-wide mb-3">
         Sneaker Company
       </div>
@@ -56,32 +56,36 @@ function Desc(props) {
         </div>
       </div>
 
-      <div className="flex bg-zinc-100 rounded-md mb-4 h-12">
-        <button
-          name="subtract"
-          className="flex items-center justify-center w-1/3 text-orange"
-          onClick={handleQuantity}
-        >
-          <Minus className="pointer-events-none" />
-        </button>
-        <div className="flex justify-center items-center w-1/3 font-bold">
-          {quantity}
+      {/* Quantity Button */}
+      <div className="lg:flex gap-4">
+        <div className="flex bg-zinc-100 rounded-md mb-4 h-12 lg:w-1/4">
+          <button
+            name="subtract"
+            className="flex items-center justify-center w-1/3 text-orange"
+            onClick={handleQuantity}
+          >
+            <Minus className="pointer-events-none" />
+          </button>
+          <div className="flex justify-center items-center w-1/3 font-bold">
+            {quantity}
+          </div>
+          <button
+            className="flex justify-center items-center w-1/3 text-orange"
+            name="add"
+            onClick={handleQuantity}
+          >
+            <Plus className="pointer-events-none" />
+          </button>
         </div>
+
+        {/* Add to cart Button */}
         <button
-          className="flex justify-center items-center w-1/3 text-orange"
-          name="add"
-          onClick={handleQuantity}
+          className="flex gap-4 justify-center items-center bg-orange text-white font-bold rounded-lg w-full h-11 hover:opacity-90 lg:w-1/2"
+          onClick={sendtoCart}
         >
-          <Plus className="pointer-events-none" />
+          <Cart className="fill-slate-50" /> Add to Cart
         </button>
       </div>
-
-      <button
-        className="flex gap-4 justify-center items-center bg-orange text-white font-bold rounded-lg w-full h-11"
-        onClick={sendtoCart}
-      >
-        <Cart className="fill-slate-50" /> Add to Cart
-      </button>
     </div>
   );
 }

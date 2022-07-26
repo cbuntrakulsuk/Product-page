@@ -13,20 +13,40 @@ function Hero() {
     slidesToShow: 1,
   };
   return (
-    <Slider {...settings}>
-      <div>
-        <img className="mobile-slide" src={P1} alt="Shoes" />
+    <div className="lg:flex lg:ml-40">
+      {/* Mobile Slider */}
+      <Slider {...settings} className="lg:hidden">
+        <div>
+          <img className="mobile-slide" src={P1} alt="Shoes" />
+        </div>
+        <div>
+          <img className="mobile-slide" src={P2} alt="Shoes" />
+        </div>
+        <div>
+          <img className="mobile-slide" src={P3} alt="Shoes" />
+        </div>
+        <div>
+          <img className="mobile-slide" src={P4} alt="Shoes" />
+        </div>
+      </Slider>
+
+      {/* Desktop Hero image */}
+      <div className="hidden lg:grid grid-cols-4 w-96 gap-5">
+        <img className="rounded-xl h-96 w-96 col-span-4" src={P1} alt="Shoes" />
+        <div>
+          <img className=" rounded-md" src={P1} alt="Shoes" />
+        </div>
+        <div>
+          <img className="rounded-md" src={P2} alt="Shoes" />
+        </div>
+        <div>
+          <img className="rounded-md" src={P3} alt="Shoes" />
+        </div>
+        <div>
+          <img className="rounded-md" src={P4} alt="Shoes" />
+        </div>
       </div>
-      <div>
-        <img className="mobile-slide" src={P2} alt="Shoes" />
-      </div>
-      <div>
-        <img className="mobile-slide" src={P3} alt="Shoes" />
-      </div>
-      <div>
-        <img className="mobile-slide" src={P4} alt="Shoes" />
-      </div>
-    </Slider>
+    </div>
   );
 }
 

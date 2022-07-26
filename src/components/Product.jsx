@@ -5,8 +5,8 @@ import { CartContext } from "./ShoppingCartContext";
 import React, { useContext } from "react";
 
 function Product(props) {
-  let total = props.quantity * props.price;
-  const [, setShoppingList] = useContext(CartContext);
+  const [shoppingList, setShoppingList] = useContext(CartContext);
+  let total = shoppingList.quantity * shoppingList.price;
 
   function deleteItem() {
     setShoppingList([]);
@@ -18,7 +18,7 @@ function Product(props) {
         <img src={productImg} alt="shoes" className="rounded" />
       </div>
       <div className="col-span-3 text-gray text-sm truncate pl-1">
-        {props.title}
+        {shoppingList.product}
       </div>
       <div
         className="row-span-2 text-gray flex justify-center items-center cursor-pointer"
@@ -26,7 +26,9 @@ function Product(props) {
       >
         <Delete />
       </div>
-      <div className="col-span-2 text-gray text-sm pl-1">{props.price}</div>
+      <div className="col-span-2 text-gray text-sm pl-1">
+        ${shoppingList.price} x {shoppingList.quantity}
+      </div>
       <div className="col-span-1 text-sm">${total}.00</div>
     </div>
   );

@@ -4,6 +4,9 @@ const colors = require("tailwindcss/colors");
 module.exports = {
   content: ["./src/components/**.{js,jsx,ts,tsx}"],
   theme: {
+    screens: {
+      lg: "1440px",
+    },
     extend: {
       fontFamily: {
         kumhb: ["Kumbh Sans"],
@@ -13,6 +16,9 @@ module.exports = {
         paleOrange: "#ffede0",
         white: "rgb(255 255 255)",
         gray: "#9A9A9C",
+      },
+      animation: {
+        cartBounce: "bounce 1s ease-in-out 3",
       },
     },
   },
