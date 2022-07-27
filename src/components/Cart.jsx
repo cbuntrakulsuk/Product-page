@@ -15,7 +15,7 @@ function Cart(props) {
   }, [shoppingList.product]);
 
   return (
-    <div className=" bg-white mt-3 rounded-md font-bold p-5 mx-5 w-[500px] h-64">
+    <div className=" bg-white mt-3 rounded-md font-bold p-5 mx-5 w-[500px] h-64 shadow-xl shadow-black/30">
       Cart
       <hr className="mt-6 text-zinc-300"></hr>
       {cartisEmpty ? (

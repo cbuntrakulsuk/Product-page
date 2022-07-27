@@ -1,5 +1,7 @@
 import { ReactComponent as Menu } from "../images/icon-menu.svg";
 import { ReactComponent as Cart } from "../images/icon-cart.svg";
+import { ReactComponent as Brand } from "../images/logo.svg";
+
 import Avatar from "../images/image-avatar.png";
 import React, { useEffect, useState, useContext } from "react";
 import { CartContext } from "./ShoppingCartContext";
@@ -19,36 +21,36 @@ function Navbar(props) {
   }, [shoppingList.quantity]);
 
   return (
-    <nav className="flex items-center bg-white h-16 w-full z-50 lg:h-32">
+    <nav className="flex items-center bg-white h-[70px] w-full z-50 lg:h-[112px] lg:border-b-[1px] lg:border-gray lg:w-[1100px] lg:mx-auto lg:mb-[90px]">
       {/* mobile menu */}
       <div
         className="lg:hidden mx-5 my-4 cursor-pointer"
         onClick={props.toggleMenu}
       >
-        <Menu className="hover:fill-orange" />
+        <Menu className="hover:fill-orange fill-slate-600" />
       </div>
 
       {/* Brand Name */}
-      <div className="text-3xl pb-1 text-zinc-800 font-bold font-kumhb w-1/2 lg:text-4xl lg:ml-20 lg:flex">
-        sneakers
+      <div className="lg:flex lg:items-center">
+        <Brand className="lg:mr-14" />
         {/* Desktop Nav */}
-        <div className="hidden lg:flex text-2xl items-center ml-14 text-gray font-thin">
-          <ul className="lg:flex lg:gap-7">
-            <li className="inline">Collections</li>
-            <li className="inline">Men</li>
-            <li className="inline">Women</li>
-            <li className="inline">About</li>
-            <li className="inline">Contact</li>
+        <div className="hidden lg:flex text-2xl items-center text-slate-600 font-base">
+          <ul className="lg:flex lg:gap-9 lg:text-lg">
+            <li className="desktop-nav">Collections</li>
+            <li className="desktop-nav">Men</li>
+            <li className="desktop-nav">Women</li>
+            <li className="desktop-nav ">About</li>
+            <li className="desktop-nav ">Contact</li>
           </ul>
         </div>
       </div>
 
       {/* Cart Icon */}
       <div
-        className="relative w-1/2 flex justify-end mr-5"
+        className="relative w-1/2 flex justify-end mr-5 lg:mr-10"
         onClick={props.toggleCart}
       >
-        <Cart className="fill-slate-500 cursor-pointer hover:fill-orange" />
+        <Cart className="fill-slate-500 cursor-pointer hover:fill-orange lg:scale-125" />
         {isCartEmpty ? null : (
           <div className="absolute w-4 h-3 bg-orange rounded bottom-3 -right-1 text-white font-bold text-xs flex justify-center items-center animate-cartBounce">
             {shoppingList.quantity}
@@ -56,7 +58,7 @@ function Navbar(props) {
         )}
       </div>
 
-      <div className="scale-50 mr-5 cursor-pointer">
+      <div className="scale-50 mr-5 cursor-pointer lg:scale-75">
         <img src={Avatar} alt="Profile Avatar" />
       </div>
     </nav>

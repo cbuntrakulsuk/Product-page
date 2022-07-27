@@ -13,7 +13,7 @@ function Hero() {
     slidesToShow: 1,
   };
   return (
-    <div className="lg:flex lg:ml-40">
+    <div className="lg:flex lg:justify-center lg:mr-[125px]">
       {/* Mobile Slider */}
       <Slider {...settings} className="lg:hidden">
         <div>
@@ -31,19 +31,19 @@ function Hero() {
       </Slider>
 
       {/* Desktop Hero image */}
-      <div className="hidden lg:grid grid-cols-4 w-96 gap-5">
-        <img className="rounded-xl h-96 w-96 col-span-4" src={P1} alt="Shoes" />
+      <div className="hidden lg:grid grid-cols-4 h-[565px] w-[445px] gap-5">
+        <img className="rounded-xl col-span-4" src={P1} alt="Shoes" />
         <div>
-          <img className=" rounded-md" src={P1} alt="Shoes" />
+          <img className=" rounded-md cursor-pointer" src={P1} alt="Shoes" />
         </div>
         <div>
-          <img className="rounded-md" src={P2} alt="Shoes" />
+          <img className="rounded-md cursor-pointer" src={P2} alt="Shoes" />
         </div>
         <div>
-          <img className="rounded-md" src={P3} alt="Shoes" />
+          <img className="rounded-md cursor-pointer" src={P3} alt="Shoes" />
         </div>
         <div>
-          <img className="rounded-md" src={P4} alt="Shoes" />
+          <img className="rounded-md cursor-pointer" src={P4} alt="Shoes" />
         </div>
       </div>
     </div>

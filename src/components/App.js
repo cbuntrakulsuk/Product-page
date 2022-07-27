@@ -21,7 +21,7 @@ function App() {
 
   return (
     <CartProvider>
-      <div className="App">
+      <div className="w-screen">
         <Navbar toggleMenu={toggleMenu} toggleCart={toggleCart} />
         <div
           className={
@@ -35,13 +35,13 @@ function App() {
         <div
           className={
             menu
-              ? "translate-x-0 z-50 duration-300 absolute top-0 bg-white h-screen w-2/5 pl-4 pt-8 ease-in-out"
+              ? "translate-x-0 z-50 duration-300 absolute top-0 bg-white h-screen w-2/5 pl-4 pt-8 ease-in-out shadow-xl shadow-black/30"
               : "absolute top-0 translate-y-7 translate-x-[-100%] z-50 duration-300 h-screen"
           }
         >
           <Menu toggleMenu={toggleMenu} />
         </div>
-        <div className="lg:flex">
+        <div className="lg:flex lg:justify-center lg:items-center lg:max-w-5xl lg:mx-auto">
           <Hero />
           <Desc />
         </div>

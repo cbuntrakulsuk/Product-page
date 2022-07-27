@@ -4,7 +4,7 @@
 
 @layer components {
   .mobile-slide {
-    @apply h-80 w-full object-cover object-top;
+    @apply h-[300px] w-full object-cover object-top pb-6;
   }
 
   .menu-item {
@@ -13,5 +13,8 @@
 
   .menu-item:hover {
     @apply text-orange cursor-pointer;
+  }
+  .desktop-nav {
+    @apply inline hover:border-b-4 h-[112px] pt-11 hover:border-b-orange cursor-pointer;
   }
 }
