@@ -15,23 +15,18 @@ function Cart(props) {
   }, [shoppingList.product]);
 
   return (
-    <div className=" bg-white mt-3 rounded-md font-bold p-5 mx-5 w-[500px] h-64 shadow-xl shadow-black/30">
+    <div className=" mx-5 mt-3 h-64 w-[500px] rounded-md bg-white p-5 font-bold shadow-xl shadow-black/30 lg:w-96">
       Cart
       <hr className="mt-6 text-zinc-300"></hr>
       {cartisEmpty ? (
-        <div className="text-center my-10 text-gray"> Your cart is empty</div>
+        <div className="my-10 text-center text-gray"> Your cart is empty</div>
       ) : (
-        <Product
-          // title={shoppingList.product}
-          // price={shoppingList.price}
-          // quantity={shoppingList.quantity}
-          deleteItem={props.deleteItem}
-        />
+        <Product deleteItem={props.deleteItem} />
       )}
       {cartisEmpty ? (
         ""
       ) : (
-        <div className="mt-6 m-auto text-center bg-orange rounded-md h-12 flex items-center justify-center font-bold text-white">
+        <div className="m-auto mt-6 flex h-12 items-center justify-center rounded-md bg-orange text-center font-bold text-white">
           Checkout
         </div>
       )}

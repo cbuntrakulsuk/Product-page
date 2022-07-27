@@ -26,7 +26,7 @@ function App() {
         <div
           className={
             opencart
-              ? "z-40 absolute top-20 left-0 transition-all duration-300 ease-in-out flex justify-center w-full"
+              ? "absolute top-20 left-0 z-40 flex w-full justify-center transition-all duration-300 ease-in-out lg:left-96"
               : "absolute -top-96 opacity-0"
           }
         >
@@ -35,13 +35,13 @@ function App() {
         <div
           className={
             menu
-              ? "translate-x-0 z-50 duration-300 absolute top-0 bg-white h-screen w-2/5 pl-4 pt-8 ease-in-out shadow-xl shadow-black/30"
-              : "absolute top-0 translate-y-7 translate-x-[-100%] z-50 duration-300 h-screen"
+              ? "absolute top-0 z-50 h-screen w-2/5 translate-x-0 bg-white pl-4 pt-8 shadow-xl shadow-black/30 duration-300 ease-in-out"
+              : "absolute top-0 z-50 h-screen translate-y-7 translate-x-[-100%] duration-300"
           }
         >
           <Menu toggleMenu={toggleMenu} />
         </div>
-        <div className="lg:flex lg:justify-center lg:items-center lg:max-w-5xl lg:mx-auto">
+        <div className="lg:mx-auto lg:flex lg:max-w-5xl lg:items-center lg:justify-center">
           <Hero />
           <Desc />
         </div>

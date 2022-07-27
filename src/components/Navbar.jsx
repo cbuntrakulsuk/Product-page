@@ -21,20 +21,20 @@ function Navbar(props) {
   }, [shoppingList.quantity]);
 
   return (
-    <nav className="flex items-center bg-white h-[70px] w-full z-50 lg:h-[112px] lg:border-b-[1px] lg:border-gray lg:w-[1100px] lg:mx-auto lg:mb-[90px]">
+    <nav className="z-50 flex h-[70px] w-full items-center bg-white lg:mx-auto lg:mb-[90px] lg:h-[112px] lg:w-[1100px] lg:border-b-[1px] lg:border-gray ">
       {/* mobile menu */}
       <div
-        className="lg:hidden mx-5 my-4 cursor-pointer"
+        className="mx-5 my-4 cursor-pointer lg:hidden"
         onClick={props.toggleMenu}
       >
-        <Menu className="hover:fill-orange fill-slate-600" />
+        <Menu className="fill-slate-600 hover:fill-orange" />
       </div>
 
       {/* Brand Name */}
       <div className="lg:flex lg:items-center">
         <Brand className="lg:mr-14" />
         {/* Desktop Nav */}
-        <div className="hidden lg:flex text-2xl items-center text-slate-600 font-base">
+        <div className="font-base hidden items-center text-2xl text-slate-600 lg:flex">
           <ul className="lg:flex lg:gap-9 lg:text-lg">
             <li className="desktop-nav">Collections</li>
             <li className="desktop-nav">Men</li>
@@ -47,18 +47,19 @@ function Navbar(props) {
 
       {/* Cart Icon */}
       <div
-        className="relative w-1/2 flex justify-end mr-5 lg:mr-10"
+        className="relative mr-5 flex w-1/2 justify-end lg:mr-10"
         onClick={props.toggleCart}
       >
-        <Cart className="fill-slate-500 cursor-pointer hover:fill-orange lg:scale-125" />
+        <Cart className="cursor-pointer fill-slate-500 hover:fill-orange lg:scale-125" />
         {isCartEmpty ? null : (
-          <div className="absolute w-4 h-3 bg-orange rounded bottom-3 -right-1 text-white font-bold text-xs flex justify-center items-center animate-cartBounce">
+          <div className="absolute bottom-3 -right-1 flex h-3 w-4 animate-cartBounce items-center justify-center rounded bg-orange text-xs font-bold text-white">
             {shoppingList.quantity}
           </div>
         )}
       </div>
 
-      <div className="scale-50 mr-5 cursor-pointer lg:scale-75">
+      {/* Avatar */}
+      <div className="mr-5 scale-50 cursor-pointer lg:scale-75">
         <img src={Avatar} alt="Profile Avatar" />
       </div>
     </nav>

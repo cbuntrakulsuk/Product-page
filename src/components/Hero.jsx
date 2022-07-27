@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import P1 from "../images/image-product-1.jpg";
 import P2 from "../images/image-product-2.jpg";
@@ -6,44 +6,92 @@ import P3 from "../images/image-product-3.jpg";
 import P4 from "../images/image-product-4.jpg";
 
 function Hero() {
+  const [mainImg, setMainImg] = useState(P1);
+  const [activeImg, setActiveImg] = useState();
+
+  const activeColor = {
+    // border: "4px solid orange",
+    outline: "solid hsl(26, 100%, 55%)",
+    opacity: "60%",
+  };
+
   var settings = {
     infinite: true,
     speed: 500,
     arrows: true,
     slidesToShow: 1,
   };
+
+  function lightBox(event) {
+    setMainImg(event.target.src);
+    setActiveImg(event.target.id);
+  }
+
   return (
-    <div className="lg:flex lg:justify-center lg:mr-[125px]">
+    <div className="lg:mr-[125px] lg:flex lg:justify-center">
       {/* Mobile Slider */}
       <Slider {...settings} className="lg:hidden">
         <div>
-          <img className="mobile-slide" src={P1} alt="Shoes" />
+          <img className="mobile-slide" src={P1} alt="Shoes" id="1" />
         </div>
         <div>
-          <img className="mobile-slide" src={P2} alt="Shoes" />
+          <img className="mobile-slide" src={P2} alt="Shoes" id="2" />
         </div>
         <div>
-          <img className="mobile-slide" src={P3} alt="Shoes" />
+          <img className="mobile-slide" src={P3} alt="Shoes" id="3" />
         </div>
         <div>
-          <img className="mobile-slide" src={P4} alt="Shoes" />
+          <img className="mobile-slide" src={P4} alt="Shoes" id="4" />
         </div>
       </Slider>
 
       {/* Desktop Hero image */}
-      <div className="hidden lg:grid grid-cols-4 h-[565px] w-[445px] gap-5">
-        <img className="rounded-xl col-span-4" src={P1} alt="Shoes" />
+
+      <div
+        className="hidden h-[565px] w-[445px] grid-cols-4 gap-5 lg:grid"
+        role="group"
+      >
+        <img className="col-span-4 rounded-xl" src={mainImg} alt="Shoes" />
+        {/* thumbnail */}
         <div>
-          <img className=" rounded-md cursor-pointer" src={P1} alt="Shoes" />
+          <img
+            id="1"
+            className="light-box-thumbnail"
+            src={P1}
+            alt="Shoes1"
+            onClick={lightBox}
+            style={activeImg === "1" ? activeColor : null}
+          />
         </div>
         <div>
-          <img className="rounded-md cursor-pointer" src={P2} alt="Shoes" />
+          <img
+            id="2"
+            className="light-box-thumbnail"
+            src={P2}
+            alt="Shoes2"
+            onClick={lightBox}
+            style={activeImg === "2" ? activeColor : null}
+          />
         </div>
         <div>
-          <img className="rounded-md cursor-pointer" src={P3} alt="Shoes" />
+          <img
+            id="3"
+            className="light-box-thumbnail"
+            src={P3}
+            alt="Shoes3"
+            onClick={lightBox}
+            style={activeImg === "3" ? activeColor : null}
+          />
         </div>
         <div>
-          <img className="rounded-md cursor-pointer" src={P4} alt="Shoes" />
+          <img
+            id="4"
+            className="light-box-thumbnail"
+            src={P4}
+            alt="Shoes4"
+            onClick={lightBox}
+            style={activeImg === "4" ? activeColor : null}
+          />
         </div>
       </div>
     </div>
