@@ -14,10 +14,12 @@
   .menu-item:hover {
     @apply cursor-pointer text-orange;
   }
+
   .desktop-nav {
     @apply inline h-[112px] cursor-pointer pt-11 hover:border-b-4 hover:border-b-orange;
   }
+
   .light-box-thumbnail {
-    @apply cursor-pointer rounded-lg hover:opacity-60;
+    @apply cursor-pointer rounded-xl hover:opacity-60;
   }
 }

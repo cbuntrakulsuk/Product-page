@@ -33,7 +33,7 @@ function Hero() {
   }
 
   return (
-    <div className="lg:mr-[125px] lg:flex lg:justify-center">
+    <div>
       {/* Mobile Slider */}
       <Slider {...settings} className="lg:hidden">
         <div>
@@ -50,61 +50,63 @@ function Hero() {
         </div>
       </Slider>
 
-      {/* Desktop Hero image */}
-      {isModalOpen ? (
-        <Modal mainIMG={mainImg} setState={setisModalOpen} />
-      ) : null}
-      <div
-        className="hidden h-[565px] w-[445px] grid-cols-4 gap-5 lg:grid"
-        role="group"
-      >
-        {/* Main Image */}
-        <img
-          className="col-span-4 cursor-zoom-in rounded-xl"
-          src={mainImg}
-          alt="Shoes"
-          onClick={openModal}
-        />
-        {/* thumbnail */}
-        <div>
+      {/* MODAL */}
+      <div>
+        {isModalOpen ? (
+          <Modal mainIMG={mainImg} setState={setisModalOpen} />
+        ) : null}
+      </div>
+
+      <div className="lg:mr-[125px] lg:flex lg:justify-center">
+        <div className="hidden h-[565px] w-[445px] grid-cols-4 gap-5 lg:grid">
+          {/* Main Image */}
           <img
-            id="1"
-            className="light-box-thumbnail"
-            src={P1}
-            alt="Shoes1"
-            onClick={setGallery}
-            style={activeImg === "1" ? activeColor : null}
+            className="col-span-4 cursor-zoom-in rounded-3xl"
+            src={mainImg}
+            alt="Shoes"
+            onClick={openModal}
           />
-        </div>
-        <div>
-          <img
-            id="2"
-            className="light-box-thumbnail"
-            src={P2}
-            alt="Shoes2"
-            onClick={setGallery}
-            style={activeImg === "2" ? activeColor : null}
-          />
-        </div>
-        <div>
-          <img
-            id="3"
-            className="light-box-thumbnail"
-            src={P3}
-            alt="Shoes3"
-            onClick={setGallery}
-            style={activeImg === "3" ? activeColor : null}
-          />
-        </div>
-        <div>
-          <img
-            id="4"
-            className="light-box-thumbnail"
-            src={P4}
-            alt="Shoes4"
-            onClick={setGallery}
-            style={activeImg === "4" ? activeColor : null}
-          />
+          {/* thumbnail */}
+          <div>
+            <img
+              id="1"
+              className="light-box-thumbnail"
+              src={P1}
+              alt="Shoes1"
+              onClick={setGallery}
+              style={activeImg === "1" ? activeColor : null}
+            />
+          </div>
+          <div>
+            <img
+              id="2"
+              className="light-box-thumbnail"
+              src={P2}
+              alt="Shoes2"
+              onClick={setGallery}
+              style={activeImg === "2" ? activeColor : null}
+            />
+          </div>
+          <div>
+            <img
+              id="3"
+              className="light-box-thumbnail"
+              src={P3}
+              alt="Shoes3"
+              onClick={setGallery}
+              style={activeImg === "3" ? activeColor : null}
+            />
+          </div>
+          <div>
+            <img
+              id="4"
+              className="light-box-thumbnail"
+              src={P4}
+              alt="Shoes4"
+              onClick={setGallery}
+              style={activeImg === "4" ? activeColor : null}
+            />
+          </div>
         </div>
       </div>
     </div>
