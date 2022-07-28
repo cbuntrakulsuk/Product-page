@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import Modal from "./Modal";
 
 function Gallery(props) {
   const [mainImg, setMainImg] = useState(props.imageArray[0]);
   const [activeImg, setActiveImg] = useState();
-  const [isModalOpen, setisModalOpen] = useState(false);
+  // const [isModalOpen, setisModalOpen] = useState(false);
 
   const activeColor = {
     outline: "solid hsl(26, 100%, 55%)",
@@ -16,10 +15,6 @@ function Gallery(props) {
     setActiveImg(event.target.id);
   }
 
-  function openModal() {
-    setisModalOpen(true);
-  }
-
   return (
     <div>
       <div className="lg:mr-[125px] lg:flex lg:justify-center">
@@ -29,7 +24,7 @@ function Gallery(props) {
             className="col-span-4 cursor-zoom-in rounded-3xl"
             src={mainImg}
             alt="Shoes"
-            onClick={openModal}
+            onClick={props.openModal}
           />
           {/* thumbnail */}
           <div>
@@ -73,13 +68,6 @@ function Gallery(props) {
             />
           </div>
         </div>
-      </div>
-
-      {/* MODAL */}
-      <div>
-        {isModalOpen ? (
-          <Modal mainIMG={mainImg} setState={setisModalOpen} />
-        ) : null}
       </div>
     </div>
   );

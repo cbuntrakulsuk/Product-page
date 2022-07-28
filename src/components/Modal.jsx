@@ -1,4 +1,5 @@
 import React from "react";
+import Gallery from "./Gallery";
 import { ReactComponent as Close } from "../images/icon-close.svg";
 
 function Modal(props) {
@@ -7,18 +8,18 @@ function Modal(props) {
   }
   return (
     <div>
-      <div className="absolute inset-0 h-full w-full bg-black opacity-80"></div>
-      <div className="absolute top-0 left-0 z-50 h-full w-full">
-        <div className="z-50 mx-auto mt-40 h-[550px] w-[550px]">
-          <div className="mr-4 flex justify-end pb-7">
-            <Close
-              className="scale-[2] cursor-pointer fill-white"
-              onClick={close}
-            />
+      <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div className="scale-125">
+          <div
+            onClick={close}
+            className="mb-5 flex w-[440px] cursor-pointer justify-end fill-white"
+          >
+            <Close />
           </div>
-          <img src={props.mainIMG} alt="mainIMG" className="rounded-3xl" />
+          <Gallery imageArray={props.imageArray} />
         </div>
       </div>
+      <div className="fixed inset-0 z-40 bg-black opacity-70"></div>
     </div>
   );
 }
