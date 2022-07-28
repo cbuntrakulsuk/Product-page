@@ -40,7 +40,9 @@ function Hero() {
         </div>
       </Slider>
 
-      <Gallery openModal={openModal} imageArray={images} />
+      <div className="cursor-zoom-in lg:mr-24 ">
+        <Gallery openModal={openModal} imageArray={images} />
+      </div>
 
       {/* MODAL */}
       <div>
