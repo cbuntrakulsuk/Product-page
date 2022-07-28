@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
+import Modal from "./Modal";
 import P1 from "../images/image-product-1.jpg";
 import P2 from "../images/image-product-2.jpg";
 import P3 from "../images/image-product-3.jpg";
@@ -8,9 +9,9 @@ import P4 from "../images/image-product-4.jpg";
 function Hero() {
   const [mainImg, setMainImg] = useState(P1);
   const [activeImg, setActiveImg] = useState();
+  const [isModalOpen, setisModalOpen] = useState(false);
 
   const activeColor = {
-    // border: "4px solid orange",
     outline: "solid hsl(26, 100%, 55%)",
     opacity: "60%",
   };
@@ -22,9 +23,13 @@ function Hero() {
     slidesToShow: 1,
   };
 
-  function lightBox(event) {
+  function setGallery(event) {
     setMainImg(event.target.src);
     setActiveImg(event.target.id);
+  }
+
+  function openModal() {
+    setisModalOpen(true);
   }
 
   return (
@@ -46,12 +51,20 @@ function Hero() {
       </Slider>
 
       {/* Desktop Hero image */}
-
+      {isModalOpen ? (
+        <Modal mainIMG={mainImg} setState={setisModalOpen} />
+      ) : null}
       <div
         className="hidden h-[565px] w-[445px] grid-cols-4 gap-5 lg:grid"
         role="group"
       >
-        <img className="col-span-4 rounded-xl" src={mainImg} alt="Shoes" />
+        {/* Main Image */}
+        <img
+          className="col-span-4 cursor-zoom-in rounded-xl"
+          src={mainImg}
+          alt="Shoes"
+          onClick={openModal}
+        />
         {/* thumbnail */}
         <div>
           <img
@@ -59,7 +72,7 @@ function Hero() {
             className="light-box-thumbnail"
             src={P1}
             alt="Shoes1"
-            onClick={lightBox}
+            onClick={setGallery}
             style={activeImg === "1" ? activeColor : null}
           />
         </div>
@@ -69,7 +82,7 @@ function Hero() {
             className="light-box-thumbnail"
             src={P2}
             alt="Shoes2"
-            onClick={lightBox}
+            onClick={setGallery}
             style={activeImg === "2" ? activeColor : null}
           />
         </div>
@@ -79,7 +92,7 @@ function Hero() {
             className="light-box-thumbnail"
             src={P3}
             alt="Shoes3"
-            onClick={lightBox}
+            onClick={setGallery}
             style={activeImg === "3" ? activeColor : null}
           />
         </div>
@@ -89,7 +102,7 @@ function Hero() {
             className="light-box-thumbnail"
             src={P4}
             alt="Shoes4"
-            onClick={lightBox}
+            onClick={setGallery}
             style={activeImg === "4" ? activeColor : null}
           />
         </div>
