@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 
 function Gallery(props) {
-  const [mainImg, setMainImg] = useState(props.imageArray[0]);
+  const [mainImg, setMainImg] = useState(() => {
+    if (props.imageArray[props.index - 1] >= 0) {
+      return props.imageArray[props.index - 1];
+    }
+    return props.imageArray[0];
+  });
+
   const [activeImg, setActiveImg] = useState();
 
   const activeColor = {
@@ -12,6 +18,7 @@ function Gallery(props) {
   function setGallery(event) {
     setMainImg(event.target.src);
     setActiveImg(event.target.id);
+    props.setIndex(event.target.id);
   }
 
   return (

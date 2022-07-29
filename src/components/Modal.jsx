@@ -16,6 +16,7 @@ function Modal(props) {
   function previousSlide() {
     console.log("test");
   }
+
   return (
     <div>
       <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -34,7 +35,11 @@ function Modal(props) {
           >
             <Close />
           </div>
-          <Gallery imageArray={props.imageArray} />
+          <Gallery
+            setIndex={props.setIndex}
+            index={props.index}
+            imageArray={props.imageArray}
+          />
         </div>
         <div
           className="z-40 h-16 w-16 cursor-pointer rounded-full bg-white"
