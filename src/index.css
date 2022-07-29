@@ -16,7 +16,7 @@
   }
 
   .desktop-nav {
-    @apply inline h-[112px] cursor-pointer pt-11 hover:border-b-4 hover:border-b-orange;
+    @apply inline h-[112px] cursor-pointer pt-11 duration-100 ease-in-out hover:border-b-4 hover:border-b-orange;
   }
 
   .light-box-thumbnail {

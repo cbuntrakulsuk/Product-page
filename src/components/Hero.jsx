@@ -8,9 +8,11 @@ import P3 from "../images/image-product-3.jpg";
 import P4 from "../images/image-product-4.jpg";
 
 function Hero() {
+  const images = [P1, P2, P3, P4];
   const [index, setIndex] = useState(0);
   const [isModalOpen, setisModalOpen] = useState(false);
-  const images = [P1, P2, P3, P4];
+  const [mainImg, setMainImg] = useState(images[0]);
+  const [modalImg, setModalImg] = useState(images[index]);
 
   var settings = {
     infinite: true,
@@ -19,8 +21,9 @@ function Hero() {
     slidesToShow: 1,
   };
 
-  function openModal(event) {
+  function openModal() {
     setisModalOpen(true);
+    setModalImg(images[index]);
   }
 
   return (
@@ -43,6 +46,8 @@ function Hero() {
 
       <div className="cursor-zoom-in lg:mr-24 ">
         <Gallery
+          setMainImg={setMainImg}
+          mainImg={mainImg}
           setIndex={setIndex}
           openModal={openModal}
           imageArray={images}
@@ -53,10 +58,12 @@ function Hero() {
       <div>
         {isModalOpen ? (
           <Modal
-            setIndex={setIndex}
-            index={index}
+            setMainImg={setModalImg}
+            mainImg={modalImg}
             imageArray={images}
             setState={setisModalOpen}
+            setIndex={setIndex}
+            index={index}
           />
         ) : null}
       </div>

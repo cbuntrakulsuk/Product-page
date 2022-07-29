@@ -10,17 +10,31 @@ function Modal(props) {
   }
 
   function nextSlide() {
-    console.log("test");
+    const isLastSlide = props.index === props.imageArray.length - 1;
+    props.setMainImg(
+      isLastSlide ? props.imageArray[0] : props.imageArray[props.index + 1]
+    );
+    props.setIndex((prevIndex) => {
+      return isLastSlide ? 0 : prevIndex + 1;
+    });
   }
 
   function previousSlide() {
-    console.log("test");
+    const isFirstSlide = props.index === 0;
+    props.setMainImg(
+      isFirstSlide
+        ? props.imageArray[props.imageArray.length - 1]
+        : props.imageArray[props.index - 1]
+    );
+    props.setIndex((prevIndex) => {
+      return isFirstSlide ? props.imageArray.length - 1 : prevIndex - 1;
+    });
   }
 
   return (
-    <div>
+    <div className="select-none">
       <div className="fixed inset-0 z-50 flex items-center justify-center">
-        <div className="z-40 h-16 w-16 cursor-pointer rounded-full bg-white">
+        <div className="z-50 h-16 w-16 cursor-pointer rounded-full bg-white">
           <div
             className="z-50 flex h-16 w-16 scale-150 items-center justify-center pr-1"
             onClick={previousSlide}
@@ -36,6 +50,8 @@ function Modal(props) {
             <Close />
           </div>
           <Gallery
+            mainImg={props.mainImg}
+            setMainImg={props.setMainImg}
             setIndex={props.setIndex}
             index={props.index}
             imageArray={props.imageArray}
@@ -50,7 +66,7 @@ function Modal(props) {
           </div>
         </div>
       </div>
-      <div className="fixed inset-0 z-40 bg-black opacity-70"></div>
+      <div className="pointer-events-none fixed inset-0 z-40 bg-black opacity-70"></div>
     </div>
   );
 }

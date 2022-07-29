@@ -21,7 +21,7 @@ function Navbar(props) {
   }, [shoppingList.quantity]);
 
   return (
-    <nav className="z-50 flex h-[70px] w-full items-center bg-white lg:mx-auto lg:mb-[90px] lg:h-[112px] lg:w-[1100px] lg:border-b-[1px] lg:border-gray ">
+    <nav className="z-50 flex h-[70px] w-full items-center bg-white lg:mx-auto lg:mb-[90px] lg:h-[112px] lg:w-[1100px] lg:border-b-[1px] lg:border-gray/50 ">
       {/* mobile menu */}
       <div
         className="mx-5 my-4 cursor-pointer lg:hidden"
@@ -52,14 +52,14 @@ function Navbar(props) {
       >
         <Cart className="cursor-pointer fill-slate-500 hover:fill-orange lg:scale-125" />
         {isCartEmpty ? null : (
-          <div className="absolute bottom-3 -right-1 flex h-3 w-4 animate-cartBounce items-center justify-center rounded bg-orange text-xs font-bold text-white">
+          <div className="absolute bottom-3 -right-2 flex h-4 w-5 animate-cartBounce items-center justify-center rounded-full bg-orange text-xs font-bold text-white">
             {shoppingList.quantity}
           </div>
         )}
       </div>
 
       {/* Avatar */}
-      <div className="mr-5 scale-50 cursor-pointer lg:scale-75">
+      <div className="mr-5 scale-50 cursor-pointer rounded-full border-4 border-transparent hover:border-orange lg:scale-75">
         <img src={Avatar} alt="Profile Avatar" />
       </div>
     </nav>

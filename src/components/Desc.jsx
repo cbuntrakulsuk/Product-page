@@ -4,8 +4,8 @@ import { ReactComponent as Cart } from "../images/icon-cart.svg";
 import React, { useState, useContext } from "react";
 import { CartContext } from "./ShoppingCartContext";
 
-function Desc(props) {
-  const [quantity, setQuantity] = useState(0);
+function Desc() {
+  const [quantity, setQuantity] = useState(1);
   const [, setShoppingList] = useContext(CartContext);
 
   //pull from json later for any random item
@@ -14,7 +14,7 @@ function Desc(props) {
 
   function handleQuantity(event) {
     if (event.target.getAttribute("name") === "subtract") {
-      if (quantity >= 1) {
+      if (quantity > 1) {
         setQuantity(quantity - 1);
       }
     } else if (event.target.getAttribute("name") === "add") {

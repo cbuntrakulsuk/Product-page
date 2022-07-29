@@ -2,7 +2,7 @@ import { ReactComponent as Close } from "../images/icon-close.svg";
 
 function Menu(props) {
   return (
-    <div>
+    <div className="z-50">
       <Close
         className="ml-2 mb-8 cursor-pointer fill-[#69707D]"
         onClick={props.toggleMenu}

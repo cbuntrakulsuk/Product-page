@@ -5,7 +5,7 @@ module.exports = {
   content: ["./src/components/**.{js,jsx,ts,tsx}"],
   theme: {
     screens: {
-      lg: "1440px",
+      lg: "900px",
     },
     extend: {
       fontFamily: {
@@ -18,7 +18,7 @@ module.exports = {
         gray: "#9A9A9C",
       },
       animation: {
-        cartBounce: "bounce 1s ease-in-out 3",
+        cartBounce: "bounce 1s ease-in-out 5",
       },
     },
   },
