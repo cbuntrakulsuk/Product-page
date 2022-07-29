@@ -24,7 +24,6 @@ function Gallery(props) {
   return (
     <div>
       <div className="lg:flex lg:justify-center">
-        {/*lg:mr-[125px] */}
         <div className="hidden h-[565px] w-[445px] grid-cols-4 gap-5 lg:grid">
           {/* Main Image */}
           <img
