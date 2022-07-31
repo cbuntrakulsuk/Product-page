@@ -9,16 +9,22 @@ import { CartContext } from "./ShoppingCartContext";
 function Navbar(props) {
   const [shoppingList] = useContext(CartContext);
   const [isCartEmpty, setisCartEmpty] = useState(true);
+  const [totalQuantity, setTotalQuantity] = useState(0);
 
   useEffect(() => {
-    if (shoppingList.quantity === undefined) {
-      setisCartEmpty(true);
-    } else if (shoppingList.quantity === 0) {
+    let sum = 0;
+    shoppingList.forEach(function (obj) {
+      setTotalQuantity((sum += obj.quantity));
+    });
+  }, [shoppingList]);
+
+  useEffect(() => {
+    if (shoppingList.length === 0) {
       setisCartEmpty(true);
     } else {
       setisCartEmpty(false);
     }
-  }, [shoppingList.quantity]);
+  }, [shoppingList]);
 
   return (
     <nav className="z-50 flex h-[70px] w-full items-center bg-white lg:mx-auto lg:mb-[90px] lg:h-[112px] lg:w-[1100px] lg:border-b-[1px] lg:border-gray/50 ">
@@ -53,7 +59,8 @@ function Navbar(props) {
         <Cart className="cursor-pointer fill-slate-500 hover:fill-orange lg:scale-125" />
         {isCartEmpty ? null : (
           <div className="absolute bottom-3 -right-2 flex h-4 w-5 animate-cartBounce items-center justify-center rounded-full bg-orange text-xs font-bold text-white">
-            {shoppingList.quantity}
+            {/* {shoppingList.quantity} */}
+            {totalQuantity}
           </div>
         )}
       </div>

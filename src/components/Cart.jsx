@@ -7,12 +7,12 @@ function Cart(props) {
   const [shoppingList] = useContext(CartContext);
 
   useEffect(() => {
-    if (shoppingList.product === undefined) {
+    if (shoppingList.length === 0) {
       setcartisEmpty(true);
     } else {
       setcartisEmpty(false);
     }
-  }, [shoppingList.product]);
+  }, [shoppingList]);
 
   return (
     <div className=" mx-5 mt-3 h-64 w-[500px] rounded-md bg-white p-5 font-bold shadow-xl shadow-black/30 lg:w-96">

@@ -9,8 +9,12 @@ function Desc() {
   const [, setShoppingList] = useContext(CartContext);
 
   //pull from json later for any random item
-  let productName = "Autumn Limted Edition Senakers";
-  let price = "125.00";
+  const fallSneakers = {
+    id: 1,
+    productName: "Autumn Limted Edition Senakers",
+    price: "125.00",
+    quantity: quantity,
+  };
 
   function handleQuantity(event) {
     if (event.target.getAttribute("name") === "subtract") {
@@ -22,11 +26,14 @@ function Desc() {
     }
   }
 
+  //fix sendtoCart
+  //if item is same id as object in cart
+  //update object
+  //else
+  //add new item
   function sendtoCart() {
-    setShoppingList({
-      product: productName,
-      price: price,
-      quantity: quantity,
+    setShoppingList((prevItem) => {
+      return [...prevItem, fallSneakers];
     });
   }
 
@@ -81,6 +88,7 @@ function Desc() {
 
         {/* Add to cart Button */}
         <button
+          id={1}
           className="flex h-[56px] w-full items-center justify-center gap-4 rounded-lg bg-orange font-bold text-white shadow-xl shadow-orange/50 hover:opacity-90 lg:w-[272px]"
           onClick={sendtoCart}
         >
