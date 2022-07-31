@@ -6,7 +6,7 @@ import { CartContext } from "./ShoppingCartContext";
 
 function Desc() {
   const [quantity, setQuantity] = useState(1);
-  const [, setShoppingList] = useContext(CartContext);
+  const [shoppingList, setShoppingList] = useContext(CartContext);
 
   //pull from json later for any random item
   const fallSneakers = {
@@ -26,15 +26,26 @@ function Desc() {
     }
   }
 
-  //fix sendtoCart
-  //if item is same id as object in cart
-  //update object
-  //else
-  //add new item
-  function sendtoCart() {
-    setShoppingList((prevItem) => {
-      return [...prevItem, fallSneakers];
+  function sendtoCart(event) {
+    let newItem = event.target.getAttribute("product");
+    const check = shoppingList.findIndex(
+      (item) => item.productName === newItem
+    );
+
+    if (check !== -1) {
+      updateItem();
+    } else {
+      setShoppingList((prevItem) => {
+        return [...prevItem, fallSneakers];
+      });
+    }
+  }
+
+  function updateItem() {
+    const newArr = shoppingList.map((prevItem) => {
+      return { ...prevItem, quantity: quantity };
     });
+    setShoppingList(newArr);
   }
 
   return (
@@ -88,7 +99,7 @@ function Desc() {
 
         {/* Add to cart Button */}
         <button
-          id={1}
+          product="Autumn Limted Edition Senakers"
           className="flex h-[56px] w-full items-center justify-center gap-4 rounded-lg bg-orange font-bold text-white shadow-xl shadow-orange/50 hover:opacity-90 lg:w-[272px]"
           onClick={sendtoCart}
         >
