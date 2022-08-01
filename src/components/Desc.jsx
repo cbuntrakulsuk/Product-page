@@ -9,12 +9,20 @@ function Desc() {
   const [shoppingList, setShoppingList] = useContext(CartContext);
 
   //pull from json later for any random item
-  const fallSneakers = {
-    id: 1,
-    productName: "Autumn Limted Edition Senakers",
-    price: "125.00",
-    quantity: quantity,
-  };
+  const PRODUCT_MAP = [
+    {
+      id: 1,
+      productName: "Autumn Limted Edition Senakers",
+      price: "125.00",
+      quantity: quantity,
+    },
+    {
+      id: 2,
+      productName: "Test Product",
+      price: "25.00",
+      quantity: quantity,
+    },
+  ];
 
   function handleQuantity(event) {
     if (event.target.getAttribute("name") === "subtract") {
@@ -26,26 +34,28 @@ function Desc() {
     }
   }
 
-  function sendtoCart(event) {
-    let newItem = event.target.getAttribute("product");
-    const check = shoppingList.findIndex(
-      (item) => item.productName === newItem
+  function sendtoCart(productIndex) {
+    const isFound = shoppingList.some(
+      (element) => element.id === PRODUCT_MAP[productIndex].id
     );
 
-    if (check !== -1) {
-      updateItem();
-    } else {
-      setShoppingList((prevItem) => {
-        return [...prevItem, fallSneakers];
-      });
-    }
+    isFound ? updateExistingItem(productIndex) : addItem(productIndex);
   }
 
-  function updateItem() {
-    const newArr = shoppingList.map((prevItem) => {
-      return { ...prevItem, quantity: quantity };
+  function addItem(productIndex) {
+    setShoppingList((prevItem) => {
+      return [...prevItem, PRODUCT_MAP[productIndex]];
     });
-    setShoppingList(newArr);
+  }
+
+  function updateExistingItem(productIndex) {
+    setShoppingList((prev) =>
+      prev.map((item) =>
+        item.id === PRODUCT_MAP[productIndex].id
+          ? { ...item, quantity: quantity }
+          : item
+      )
+    );
   }
 
   return (
@@ -99,9 +109,8 @@ function Desc() {
 
         {/* Add to cart Button */}
         <button
-          product="Autumn Limted Edition Senakers"
           className="flex h-[56px] w-full items-center justify-center gap-4 rounded-lg bg-orange font-bold text-white shadow-xl shadow-orange/50 hover:opacity-90 lg:w-[272px]"
-          onClick={sendtoCart}
+          onClick={() => sendtoCart(0)}
         >
           <Cart className="fill-slate-50" /> Add to Cart
         </button>
