@@ -12,7 +12,3 @@ const CartProvider = ({ children }) => {
 };
 
 export { CartContext, CartProvider };
-
-//add this to each component that needs access to this context
-// import { CartContext } from "./ShoppingCartContext";
-// const [shoppingList, setShoppingList] = useContext(CartContext);

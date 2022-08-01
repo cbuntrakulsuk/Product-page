@@ -8,7 +8,6 @@ function Desc() {
   const [quantity, setQuantity] = useState(1);
   const [shoppingList, setShoppingList] = useContext(CartContext);
 
-  //pull from json later for any random item
   const PRODUCT_MAP = [
     {
       id: 1,
@@ -38,7 +37,6 @@ function Desc() {
     const isFound = shoppingList.some(
       (element) => element.id === PRODUCT_MAP[productIndex].id
     );
-
     isFound ? updateExistingItem(productIndex) : addItem(productIndex);
   }
 
